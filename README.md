@@ -124,8 +124,8 @@ TF-IDF (Term Frequency-Inverse Document Frequency):
 
 3. Fungsi Rekomendasi
 
-def get_recommendations(title, top_n=10):
-    # ... (lihat kode lengkap di notebook)
+ - def get_recommendations(title, top_n=10):
+      ... (lihat kode lengkap di pertanyaan)
     
  - Tujuan: Mencari film-film paling mirip dengan film input.
 
