@@ -56,7 +56,12 @@ Kolom-kolom utama:
 - tmdb_popularity → Popularitas berdasarkan TMDb.
 
 **Exploratory Data Analysis**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data beserta insight atau exploratory data analysis.
+![Image](https://github.com/user-attachments/assets/ed132d0c-6842-43be-9eab-14543cdebd75)
+- Insight:
+  1. Genre drama adalah yang paling banyak muncul, diikuti oleh komedi. Hal ini mencerminkan bahwa industri film lebih banyak memproduksi film bergenre naratif emosional dan humor, kemungkinan karena permintaan pasar yang tinggi untuk hiburan yang relatable dan ringan. Thriller dan Action di Posisi Selanjutnya
+  2. Thriller dan action juga memiliki jumlah yang signifikan. Hal ini menunjukkan bahwa film yang penuh ketegangan dan aksi banyak diproduksi, kemungkinan karena daya tariknya terhadap audiens global, terutama dalam industri Hollywood dan film blockbuster. Romance dan Dokumenter Juga Cukup Populer
+  3. Film romance dan documentation memiliki jumlah yang lumayan besar, menunjukkan bahwa kisah percintaan dan dokumenter memiliki basis penonton yang stabil. Dokumenter yang berkembang bisa jadi mencerminkan peningkatan minat terhadap edukasi dan realita sosial dalam bentuk audiovisual. Genre Niche dengan Jumlah Lebih Sedikit
+  4. Genre seperti western, war, sport, dan reality memiliki jumlah yang sangat sedikit. Ini menunjukkan bahwa genre tersebut memiliki audiens yang lebih terbatas atau kurang populer di pasar global.
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
