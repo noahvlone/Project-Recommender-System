@@ -70,23 +70,107 @@ Kolom-kolom utama:
 - Insight: Mayoritas Skor di Kisaran 5.5 – 6.5: Sebagian besar film yang direkomendasikan memiliki skor di sekitar 5.5 hingga 6.5, yang umumnya dikategorikan sebagai film dengan kualitas rata-rata hingga cukup baik. Hal ini menunjukkan bahwa sistem rekomendasi cenderung mengusulkan film dengan skor yang relatif sedang, bukan yang sangat tinggi atau sangat rendah.
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+- menghapus missing value menggunakan fungsi fillna()
+- menggabungkan beberapa fitur seperti: judul, genre, aktor, direktor untuk modeling
+- menghitung similarity matrix menggunakan Tfidf Vectorization
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+**tahap yang dilakukan dalam notebook**: 
+Text Preprocessing:
+1. Mengubah data kompleks (list) menjadi format teks siap olah.
+2. Penanganan missing value (fillna).
+
+Feature Engineering:
+1. Menggabungkan fitur-fitur terpisah menjadi satu fitur teks (bag of words).
+   Teknik ini umum digunakan untuk:
+   - Sistem rekomendasi berbasis konten (content-based filtering).
+   - Pemrosesan NLP seperti TF-IDF atau model vektor teks.
+
+String Manipulation:
+1. Penggabungan string (+), join(), dan konversi tipe data (astype).
 
 ## Modeling
-Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
+Algoritma yang digunakan adalah Content-Based Filtering dengan pendekatan TF-IDF Vectorization dan Cosine Similarity. Ini adalah sistem rekomendasi yang merekomendasikan item berdasarkan kemiripan fitur konten item tersebut.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
-- Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
+cara kerja: Cara Kerja Program
+1. TF-IDF Vectorization:
+
+tfidf = TfidfVectorizer(stop_words='english', max_features=5000)
+tfidf_matrix = tfidf.fit_transform(movies['features'])
+
+ - Tujuan: Mengubah teks di kolom features menjadi representasi numerik (vektor) agar bisa dihitung kemiripannya.
+
+ - Proses:
+TF-IDF (Term Frequency-Inverse Document Frequency):
+
+ - Menghitung bobot kata dengan memperhatikan:
+   - Term Frequency (TF): Frekuensi kata dalam satu dokumen (film).
+   - Inverse Document Frequency (IDF): Menurunkan bobot kata yang umum muncul di banyak dokumen.
+   - Contoh: Kata "action" yang sering muncul di satu film tetapi jarang di film lain akan memiliki bobot tinggi.
+
+- Parameter:
+  
+  1. stop_words='english': Menghapus kata umum (seperti "the", "and") yang tidak informatif.
+  2. max_features=5000: Membatasi fitur ke 5000 kata paling signifikan untuk mengurangi dimensi data.
+
+2. Cosine Similarity:
+   
+   - cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
+   - Tujuan: Menghitung kemiripan antar film berdasarkan vektor TF-IDF.
+
+- Proses:
+  - Cosine Similarity: Mengukur sudut antara dua vektor.
+  - Rentang nilai: 0 (tidak mirip) hingga 1 (sangat mirip).
+  - Contoh: Jika film A dan B memiliki vektor yang searah (sudut 0°), skor = 1.
+
+3. Fungsi Rekomendasi
+
+def get_recommendations(title, top_n=10):
+    # ... (lihat kode lengkap di notebook)
+    
+ - Tujuan: Mencari film-film paling mirip dengan film input.
+
+ - Proses:
+   - Mencari indeks film yang ingin direkomendasikan.
+   - Mengambil skor kemiripan dari matriks cosine_sim untuk film tersebut.
+   - Mengurutkan skor kemiripan dari tertinggi ke terendah.
+   - Memilih indeks film dengan skor tertinggi (kecuali film itu sendiri).
+   - Menampilkan informasi film rekomendasi beserta skor kemiripan.
+
+Kelebihan Metode Ini:
+1. Tidak Membutuhkan Data Pengguna: Hanya menggunakan fitur item (film) untuk rekomendasi, cocok untuk cold-start problem (kasus ketika data pengguna belum ada).
+
+2. Transparan dan Interpretabel: Rekomendasi berdasarkan fitur yang jelas (genre, aktor, deskripsi), sehingga mudah dipahami alasan rekomendasinya.
+
+3. Efisien untuk Dataset Kecil-Sedang: Perhitungan TF-IDF dan cosine similarity relatif cepat untuk dataset dengan ukuran moderat.
+
+4. Personalisasi Sederhana: Jika pengguna menyukai suatu film, sistem akan merekomendasikan film dengan konten serupa.
+
+Kekurangan Metode Ini:
+1. Keterbatasan pada Fitur Tersembunyi: Tidak bisa menangani preferensi kompleks pengguna yang tidak tercermin dalam fitur yang ada (misalnya tren atau konteks sosial).
+
+2. Masalah Sparsitas: Jika fitur teks terlalu sedikit atau tidak informatif, TF-IDF tidak bisa menangkap kemiripan dengan baik.
+
+3. Over-Specialization: Cenderung merekomendasikan item yang terlalu mirip, sehingga mengurangi kejutan (serendipity) bagi pengguna.
+
+4. Skalabilitas: Perhitungan cosine similarity untuk dataset besar (misal jutaan item) akan sangat memakan sumber daya.
+
 
 ## Evaluation
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
+1. Evaluasi I, Model menggunakan teknik Content-Based Filtering dengan matriks kesamaan berbasis TF-IDF. Dari hasil evaluasi:
+   - Rekomendasi untuk film populer seperti "The Dark Knight Rises" menghasilkan daftar film yang relevan, dengan kesamaan pada genre, aktor, dan direktur.
+   - Visualisasi skor kesamaan menunjukkan model berhasil mengidentifikasi film-film dengan kesamaan fitur.
+   - Namun, analisis distribusi IMDb score rekomendasi mengungkapkan bahwa proporsi konten niche masih signifikan, yang berarti model tidak hanya merekomendasikan film dengan rating tinggi, tetapi juga niche.
+     
+Hasil ini menunjukkan model mampu menjawab pertanyaan bisnis pertama, dengan hasil relevan dan bervariasi sesuai konteks film yang dipilih.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+2. Evaluasi II
+   - Model diuji dengan contoh film niche seperti "The Cloverfield Paradox". Rekomendasi yang dihasilkan mencakup film dengan kesamaan tema dan genre, meskipun ratingnya bervariasi.
+   - Model menunjukkan kemampuan mendeteksi film-film niche berdasarkan deskripsi, aktor, dan genre, dengan niche percentage dihitung sebagai indikator keberhasilan.
+     
+Model memenuhi tujuan ini dengan memberikan rekomendasi yang relevan dan mencakup konten niche, sehingga dapat memperluas jangkauan rekomendasi untuk pengguna.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+## Kesimpulan 
+Kesimpulan Evaluasi:
+- Model yang dikembangkan berhasil menjawab kedua pertanyaan bisnis dan memenuhi tujuan. Namun, terdapat ruang untuk penyempurnaan, seperti:
+  1. Menambahkan filter untuk pengguna yang hanya ingin melihat rekomendasi berdasarkan rating tertentu.
+  2. Melibatkan umpan balik pengguna untuk meningkatkan personalisasi rekomendasi.
