@@ -63,6 +63,12 @@ Kolom-kolom utama:
   3. Film romance dan documentation memiliki jumlah yang lumayan besar, menunjukkan bahwa kisah percintaan dan dokumenter memiliki basis penonton yang stabil. Dokumenter yang berkembang bisa jadi mencerminkan peningkatan minat terhadap edukasi dan realita sosial dalam bentuk audiovisual. Genre Niche dengan Jumlah Lebih Sedikit
   4. Genre seperti western, war, sport, dan reality memiliki jumlah yang sangat sedikit. Ini menunjukkan bahwa genre tersebut memiliki audiens yang lebih terbatas atau kurang populer di pasar global.
 
+![Image](https://github.com/user-attachments/assets/b4429e86-eea7-4bf1-b173-297495132832)
+- Insight: Berdasarkan hasil diatas dapat dijelaskan bahwa film The Platform memiliki kesamaan dengan film The Vault. kesamaan ini berasal dari genre, imdb score, dan actor.
+  
+![Image](https://github.com/user-attachments/assets/57f00ff9-2700-43dc-8db0-9712753c05d4)
+- Insight: Mayoritas Skor di Kisaran 5.5 – 6.5: Sebagian besar film yang direkomendasikan memiliki skor di sekitar 5.5 hingga 6.5, yang umumnya dikategorikan sebagai film dengan kualitas rata-rata hingga cukup baik. Hal ini menunjukkan bahwa sistem rekomendasi cenderung mengusulkan film dengan skor yang relatif sedang, bukan yang sangat tinggi atau sangat rendah.
+
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
