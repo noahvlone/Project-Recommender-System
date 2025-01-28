@@ -46,6 +46,12 @@ Terdapat 2 file dataset, yaitu `titles.csv` dan `credits.csv`, dengan rincian:
 14. **tmdb_popularity** → Popularitas berdasarkan TMDb.
 15. **original_language** → Bahasa asli konten.
 
+Kolom-kolom utama pada credits.csv:
+1. **person_id** → ID unik untuk setiap orang.
+2. **id** → ID film atau acara (berhubungan dengan titles.csv).
+3. **name** → Nama aktor atau kru.
+4. **character** → Nama karakter yang dimainkan (banyak nilai kosong).
+5. **role** → Peran dalam produksi (misalnya, ACTOR, DIRECTOR).
 ### Kondisi Data
 - `credits.csv`: Banyak nilai kosong pada kolom `character`.
 - `titles.csv`: 
@@ -80,13 +86,20 @@ Sistem rekomendasi dibangun menggunakan pendekatan cosine similarity pada matrik
 3. **Fungsi Rekomendasi**:
    - Menghasilkan rekomendasi film yang mirip berdasarkan fitur konten (genre, deskripsi, aktor, direktur).
 
-### Contoh Hasil Rekomendasi
-#### Film: The Platform
-| Title                  | Genres           | IMDb Score | Actors                | Directors          | Similarity Score |
-|------------------------|------------------|------------|-----------------------|--------------------|------------------|
-| The Vault             | [Thriller]       | 6.3        | Freddie Highmore      | Jaume Balagueró    | 0.87             |
-| Circle                | [Thriller]       | 6.0        | Julie Benz            | Aaron Hann         | 0.82             |
-| Oxygen                | [Thriller, Sci-Fi] | 6.5      | Mélanie Laurent       | Alexandre Aja      | 0.81             |
+### Hasil Rekomendasi
+#### Hasil Rekomendasi untuk 'Naruto Shippuden the Movie':
+|      | title                                               | genres                                                             |   imdb_score | directors          |   similarity_score |
+|-----:|:----------------------------------------------------|:-------------------------------------------------------------------|-------------:|:-------------------|-------------------:|
+|  322 | Naruto Shippuden the Movie: The Lost Tower          | ['animation', 'action', 'fantasy']                                 |          6.8 | Masahiko Murata    |           0.388594 |
+|  330 | Naruto Shippuden the Movie: The Will of Fire        | ['action', 'comedy', 'drama', 'fantasy', 'animation']              |          7   | Masahiko Murata    |           0.354237 |
+|  537 | Naruto Shippuden the Movie: Blood Prison            | ['action', 'comedy', 'horror', 'thriller', 'animation', 'fantasy'] |          7.1 | Masahiko Murata    |           0.34708  |
+|  374 | Naruto: Legend of the Stone of Gelel                | ['fantasy', 'action', 'comedy', 'drama', 'animation']              |          6.4 | Hirotsugu Kawasaki |           0.341813 |
+|  327 | Naruto Shippuden the Movie: Bonds                   | ['fantasy', 'animation', 'action']                                 |          6.8 | Hajime Kamegaki    |           0.319265 |
+|  350 | Naruto: Ninja Clash in the Land of Snow             | ['comedy', 'fantasy', 'animation', 'action']                       |          6.6 | Tensai Okamura     |           0.298041 |
+|  358 | Naruto: Guardians of the Crescent Moon Kingdom      | ['action', 'animation']                                            |          6.4 | Toshiyuki Tsuru    |           0.259924 |
+| 3418 | The Seven Deadly Sins: Cursed by Light              | ['animation', 'fantasy', 'action']                                 |          6.4 | Takayuki Hamana    |           0.212997 |
+|  304 | Inuyasha the Movie: Affections Touching Across Time | ['action', 'animation', 'fantasy']                                 |          7.2 | Toshiya Shinohara  |           0.157084 |
+|  386 | Inuyasha the Movie 3: Swords of an Honorable Ruler  | ['animation', 'fantasy', 'action', 'thriller']                     |          7.6 | Toshiya Shinohara  |           0.142428 |
 
 ### Evaluasi Rekomendasi
 Untuk mengevaluasi sistem rekomendasi, digunakan metrik relevansi rekomendasi:
@@ -94,8 +107,8 @@ Untuk mengevaluasi sistem rekomendasi, digunakan metrik relevansi rekomendasi:
 2. **Recall@K**: Proporsi film yang relevan dibandingkan total film relevan yang ada.
 
 #### Hasil Evaluasi untuk `The Platform`:
-- **Precision@10**: 0.8
-- **Recall@10**: 0.75
+- **Precision@10**: 1.0
+- **Recall@10**: 2.50
 
 Model mampu memberikan rekomendasi relevan untuk film target, termasuk film niche dengan skor IMDb yang moderat.
 
