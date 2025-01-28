@@ -46,7 +46,7 @@ Terdapat 2 file dataset dari [Kaggle](https://www.kaggle.com/datasets/victorsoei
 14. **tmdb_popularity** → Popularitas berdasarkan TMDb.
 15. **original_language** → Bahasa asli konten.
 
-Kolom-kolom utama pada credits.csv:
+### Fitur pada `credits.csv`:
 1. **person_id** → ID unik untuk setiap orang.
 2. **id** → ID film atau acara (berhubungan dengan titles.csv).
 3. **name** → Nama aktor atau kru.
