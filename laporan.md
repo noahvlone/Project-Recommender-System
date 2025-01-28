@@ -25,7 +25,7 @@ Menjelaskan tujuan proyek yang menjawab pernyataan masalah:
 ## Data Understanding
 
 ### Dataset
-Terdapat 2 file dataset, yaitu `titles.csv` dan `credits.csv`, dengan rincian:
+Terdapat 2 file dataset dari [Kaggle](https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies) , yaitu `titles.csv` dan `credits.csv`, dengan rincian:
 - **titles.csv** terdiri dari 5850 baris data dan 15 fitur.
 - **credits.csv** terdiri dari 77801 baris data dan 4 fitur.
 
