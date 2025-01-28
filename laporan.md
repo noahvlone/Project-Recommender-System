@@ -57,6 +57,15 @@ Kolom-kolom utama pada credits.csv:
 - `titles.csv`: 
   - Kolom `age_certification`, `seasons`, `imdb_score`, `imdb_votes`, dan `tmdb_score` memiliki nilai kosong.
 
+## Exploratory Data Analysis
+Distribusi Genre Film:
+![Image](https://github.com/user-attachments/assets/ed132d0c-6842-43be-9eab-14543cdebd75)
+- Insight:
+  1. Genre drama adalah yang paling banyak muncul, diikuti oleh komedi. Hal ini mencerminkan bahwa industri film lebih banyak memproduksi film bergenre naratif emosional dan humor, kemungkinan karena permintaan pasar yang tinggi untuk hiburan yang relatable dan ringan. Thriller dan Action di Posisi Selanjutnya
+  2. Thriller dan action juga memiliki jumlah yang signifikan. Hal ini menunjukkan bahwa film yang penuh ketegangan dan aksi banyak diproduksi, kemungkinan karena daya tariknya terhadap audiens global, terutama dalam industri Hollywood dan film blockbuster. Romance dan Dokumenter Juga Cukup Populer
+  3. Film romance dan documentation memiliki jumlah yang lumayan besar, menunjukkan bahwa kisah percintaan dan dokumenter memiliki basis penonton yang stabil. Dokumenter yang berkembang bisa jadi mencerminkan peningkatan minat terhadap edukasi dan realita sosial dalam bentuk audiovisual. Genre Niche dengan Jumlah Lebih Sedikit
+  4. Genre seperti western, war, sport, dan reality memiliki jumlah yang sangat sedikit. Ini menunjukkan bahwa genre tersebut memiliki audiens yang lebih terbatas atau kurang populer di pasar global.
+
 ## Data Preparation
 
 ### Tahapan Data Cleaning
@@ -106,7 +115,7 @@ Untuk mengevaluasi sistem rekomendasi, digunakan metrik relevansi rekomendasi:
 1. **Precision@K**: Proporsi film yang relevan di antara top-K rekomendasi.
 2. **Recall@K**: Proporsi film yang relevan dibandingkan total film relevan yang ada.
 
-#### Hasil Evaluasi untuk `The Platform`:
+#### Hasil Evaluasi untuk `Naruto Shippuden the Movie`:
 - **Precision@10**: 1.0
 - **Recall@10**: 2.50
 
